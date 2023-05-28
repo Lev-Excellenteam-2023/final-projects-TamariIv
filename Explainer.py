@@ -7,6 +7,7 @@ openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 def get_explanation(query: MakeQuery.Query):
+    res = ""
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -15,4 +16,5 @@ def get_explanation(query: MakeQuery.Query):
         ]
     )
     for item in completion.choices:
-        print(item.message.content)
+        res += item.message.content
+    return res
