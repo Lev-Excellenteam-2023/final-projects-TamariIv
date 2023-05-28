@@ -1,7 +1,9 @@
+import os
+
 import openai
 import MakeQuery
 
-openai.api_key = "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"
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 def get_explanation(query: MakeQuery.Query):
