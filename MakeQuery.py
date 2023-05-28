@@ -1,11 +1,6 @@
 import SlideData
 
 
-def make_query(data):
-    # will get a list of data
-    pass
-
-
 class Query:
     def __init__(self):
         self.query = ''
