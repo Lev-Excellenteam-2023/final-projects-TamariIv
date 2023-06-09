@@ -19,3 +19,4 @@ class Query:
             q += "The paragraphs in the slide are:\n"
         for p in data.paragraphs:
             q += p + '\n'
+        self.query = q
