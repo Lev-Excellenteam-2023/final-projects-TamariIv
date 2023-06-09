@@ -1,14 +1,14 @@
 import os
-
+import asyncio
 import openai
 import MakeQuery
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
-def get_explanation(query: MakeQuery.Query):
+async def get_explanation(query: MakeQuery.Query):
     res = ""
-    completion = openai.ChatCompletion.create(
+    completion = await openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "user", "content": query.query},
