@@ -8,7 +8,7 @@ openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 async def get_explanation(query: MakeQuery.Query):
-    completion = await openai.ChatCompletion.create(
+    completion = await openai.ChatCompletion.acreate(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "user", "content": query.query},
