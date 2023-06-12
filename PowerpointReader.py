@@ -7,7 +7,6 @@ import SlideData
 class PowerpointReader:
     def __init__(self, _path):
         self.powerpoint = Presentation(_path)
-        self.slides_iterator = iter(self.powerpoint.slides)
 
     def read_slides(self) -> list[SlideData.SlideData]:
         slides_data = []
@@ -16,8 +15,6 @@ class PowerpointReader:
         return slides_data
 
     def extract_data(self, slide: Slide) -> SlideData.SlideData:
-        if not slide:
-            return {}
         titles, body = [], []
         for shape in slide.placeholders:
             if shape.placeholder_format.type in [1, 3]:
