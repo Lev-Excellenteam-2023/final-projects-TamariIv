@@ -5,9 +5,12 @@ import openai
 import MakeQuery
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
+usages = 0
 
 
 async def get_explanation(query: MakeQuery.Query):
+    global usages
+    usages += 1
     completion = await openai.ChatCompletion.acreate(
         model="gpt-3.5-turbo",
         messages=[
@@ -15,4 +18,5 @@ async def get_explanation(query: MakeQuery.Query):
             {"role": "system", "content": query.context},
         ]
     )
-    return '\n'.join([item.message.content for item in completion.choices])
+    return completion.choices[0].message.content
+    # return '\n'.join([item.message.content for item in completion.choices])
